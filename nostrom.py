@@ -2,7 +2,7 @@ import socket
 import argparse
 
 parser = argparse.ArgumentParser(description='RCE in Nostromo')
-parser.add_argument('IP',help="IP server')
+parser.add_argument('IP',help="IP server")
 parser.add_argument('port',help='port number',type=int)
 parser.add_argument('bash',help='command to execute, default is id',default='id',args='')
 args = parser.parse_args()
