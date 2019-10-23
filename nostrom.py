@@ -3,8 +3,8 @@
 import socket
 import argparse
 
-parser = argparse.ArgumentParser(description='RCE in Nostromo web server through 1.9.6 due to path traversal.')
-parser.add_argument('IP',help='domain/IP of the Nostromo web server')
+parser = argparse.ArgumentParser(description='RCE in Nostromo 1.9.6 LFI to RCE.')
+parser.add_argument('IP',help='IP victim')
 parser.add_argument('port',help='port number',type=int)
 parser.add_argument('bash',help='command to execute, default is id',default='id',nargs='?')
 args = parser.parse_args()
